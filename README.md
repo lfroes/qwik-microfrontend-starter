@@ -1,4 +1,16 @@
-# Qwik host and remote
+# Qwik host and remote (error duplication)
+
+## Error:
+
+- The error appears when you try to use builder io models/content inside this micro frontend structure
+
+## How to replicate
+
+- Add a Builder.io api key on the `packages/mfe/components/BuilderIo/constants.ts`
+- Add a valid builder IO model on the `remote/src/routes/index.tsx`
+- run `pnpm build.packages`
+- run `pnpm i`
+- run `pnpm dev`
 
 ## Getting started
 

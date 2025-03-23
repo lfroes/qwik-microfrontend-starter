@@ -26,7 +26,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
 		(prev, id) => ({
 		...prev,
 		[`/${id}/`]: {
-			target: remotesRecord[id].url.replace(`/${id}/`, ''),
+			target: remotesRecord[id].url.replace(`/components/${id}/`, ''),
 			changeOrigin: true,
 		}
 	}), {});

@@ -27,6 +27,7 @@
 		"qwik": "qwik"
 	},
 	"devDependencies": {
+		"@builder.io/sdk-qwik": "^0.18.8",
 		"@qwik-microfrontend/mfe": "workspace:^",
 		"@qwik-microfrontend/ui": "workspace:^"
 	}

@@ -22,7 +22,7 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
 export default defineConfig((): UserConfig => {
 	return {
 		plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
-		base: '/remote/',
+		base: '/components/remote/',
 		// This tells Vite which dependencies to pre-build in dev mode.
 		server: {
 			headers: {

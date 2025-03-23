@@ -1,9 +1,36 @@
 import { $, component$, useSignal, useStore } from '@builder.io/qwik';
+import { routeLoader$ } from '@builder.io/qwik-city';
+import { getBuilderSearchParams, fetchOneEntry } from '@builder.io/sdk-qwik';
 import { dispatchEvent } from '@qwik-microfrontend/mfe';
 import { Counter, type CounterStore } from '@qwik-microfrontend/ui';
 import { Detail } from '../components/Detail';
 
+import { BuilderContent, BUILDER_API_KEY } from '@qwik-microfrontend/mfe';
+
+const BUILDER_MODEL_NAME = 'valid-model-name'; // ADD a valid model name
+
+export const useBuilderContent = routeLoader$(async ({ url, error }) => {
+	const isPreviewing = url.searchParams.has('builder.preview');
+	const apiKey = BUILDER_API_KEY;
+
+	const builderContent = await fetchOneEntry({
+		model: BUILDER_MODEL_NAME,
+		apiKey,
+		options: getBuilderSearchParams(url.searchParams),
+		userAttributes: {
+			urlPath: `http://localhost:5174/${url.pathname}`,
+		},
+	});
+
+	if (!builderContent && !isPreviewing) {
+		throw error(404, 'Page not found');
+	}
+
+	return builderContent;
+});
+
 export default component$(() => {
+	const builderContent = useBuilderContent();
 	const showDetailSig = useSignal(false);
 	const toggleDetail = $(() => (showDetailSig.value = !showDetailSig.value));
 	const state = useStore<CounterStore>({
@@ -16,6 +43,7 @@ export default component$(() => {
 
 	return (
 		<>
+			<BuilderContent content={builderContent.value} model={BUILDER_MODEL_NAME} />
 			<div
 				style={{
 					background: '#1f2124',
