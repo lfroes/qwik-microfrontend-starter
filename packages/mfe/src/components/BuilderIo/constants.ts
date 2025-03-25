@@ -1,1 +1,1 @@
-export const BUILDER_API_KEY = 'YOUR_API_KEY'; // Add the builder io api key here
+export const BUILDER_API_KEY = "defd9f9cc12a4a80b9385abb09f0548e";

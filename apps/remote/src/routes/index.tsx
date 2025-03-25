@@ -7,7 +7,7 @@ import { Detail } from '../components/Detail';
 
 import { BuilderContent, BUILDER_API_KEY } from '@qwik-microfrontend/mfe';
 
-const BUILDER_MODEL_NAME = 'valid-model-name'; // ADD a valid model name
+const BUILDER_MODEL_NAME = 'new-footer-csgoroll';
 
 export const useBuilderContent = routeLoader$(async ({ url, error }) => {
 	const isPreviewing = url.searchParams.has('builder.preview');
